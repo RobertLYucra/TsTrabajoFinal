@@ -32,6 +32,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,6 +48,10 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Impartir Clases");
+
+        jButton3.setBackground(new java.awt.Color(153, 220, 214));
+        jButton3.setForeground(new java.awt.Color(230, 239, 220));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/previous (1).png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,7 +72,8 @@ public class JFPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(165, 165, 165)
-                        .addComponent(jLabel3)))
+                        .addComponent(jLabel3))
+                    .addComponent(jButton3))
                 .addContainerGap(138, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -83,7 +89,8 @@ public class JFPrincipal extends javax.swing.JFrame {
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
-                .addGap(74, 74, 74))
+                .addGap(33, 33, 33)
+                .addComponent(jButton3))
         );
 
         pack();
@@ -127,6 +134,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
