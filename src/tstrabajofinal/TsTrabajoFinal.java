@@ -5,6 +5,8 @@
  */
 package tstrabajofinal;
 
+import View.JFPrincipal;
+
 /**
  *
  * @author RobertLY
@@ -16,6 +18,9 @@ public class TsTrabajoFinal {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        JFPrincipal n = new JFPrincipal();
+        n.setVisible(true);
     }
     
 }
