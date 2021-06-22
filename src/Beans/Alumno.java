@@ -11,4 +11,5 @@ package Beans;
  */
 public class Alumno {
     private String name; 
+    private String apellido;
 }
