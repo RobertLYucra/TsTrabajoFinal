@@ -126,12 +126,14 @@ public class JFPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         LoginTutor a = new LoginTutor();
         a.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         LoginEstudiante a = new LoginEstudiante();
         a.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
