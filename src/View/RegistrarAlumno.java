@@ -5,6 +5,11 @@
  */
 package View;
 
+import Beans.Alumno;
+import Model.AlumnoModel;
+import Model.Hash;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author RobertLY
@@ -76,6 +81,9 @@ public class RegistrarAlumno extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(26, 26, 26))
         );
+
+        txtNombre.setToolTipText("");
+        txtNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,6 +199,8 @@ public class RegistrarAlumno extends javax.swing.JFrame {
                 .addGap(42, 42, 42))
         );
 
+        txtNombre.getAccessibleContext().setAccessibleName("");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -208,6 +218,30 @@ public class RegistrarAlumno extends javax.swing.JFrame {
 
     private void txtRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRegistrarActionPerformed
         // TODO add your handling code here:
+        AlumnoModel alumnoModel = new AlumnoModel();
+        Alumno alumno = new Alumno();
+        
+        String pass = new String(txtContraseña.getPassword());
+        String passCon = new String(txtContraseña2.getPassword());
+        
+        if (pass.equals(passCon)) {
+            String nuevoPass = Hash.sha1(pass);
+            
+            alumno.setName(txtNombre.getText());
+            alumno.setPassword(nuevoPass);
+            alumno.setLname(txtApellido.getText());
+            alumno.setEmail(txtCorreo.getText());
+            alumno.setUser(txtUsuario.getText());
+            
+            if (alumnoModel.registrar(alumno)) {
+                JOptionPane.showMessageDialog(null, "Registro guardado");
+            }else{
+                JOptionPane.showMessageDialog(null, "Error al guardar");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
+        }
+        
     }//GEN-LAST:event_txtRegistrarActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
