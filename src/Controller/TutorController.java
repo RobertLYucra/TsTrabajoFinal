@@ -5,10 +5,14 @@
  */
 package Controller;
 
+import Model.TutorModel;
+
 /**
  *
  * @author RobertLY
  */
-public class AlumnoController {
-    
+public class TutorController {
+     public int ValidarTutControlador(String usu,String pass){
+        return new TutorModel().ValidarTutor(usu,pass);
+    }
 }

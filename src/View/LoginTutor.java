@@ -5,6 +5,10 @@
  */
 package View;
 
+import Controller.EstudianteController;
+import Controller.TutorController;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author RobertLY
@@ -46,6 +50,11 @@ public class LoginTutor extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(51, 153, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("INICIAR SESIÓN");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(102, 153, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -106,6 +115,19 @@ public class LoginTutor extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int valorObtenido = 
+                new TutorController().ValidarTutControlador(this.txtusuario.getText(),this.txtContraseña.getText());
+        
+        if(valorObtenido==1){
+            this.hide();
+            new VistaTutor().show();
+        }
+        else
+            JOptionPane.showMessageDialog(this,"Ingrese una contraseña correcta");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
