@@ -28,7 +28,7 @@ public class RegistrarEstudiante extends javax.swing.JFrame {
     
     public void Placeholder(){
         TextPrompt nom = new TextPrompt("Nombres", txtNombre);
-        TextPrompt ape = new TextPrompt("Apellidpos", txtApellido);
+        TextPrompt ape = new TextPrompt("Apellidos", txtApellido);
         TextPrompt corr = new TextPrompt("Correo", txtCorreo);
         TextPrompt usu = new TextPrompt("Usuario", txtUsuario);
         TextPrompt cont = new TextPrompt("Contraseña", txtContraseña);
@@ -236,6 +236,7 @@ public class RegistrarEstudiante extends javax.swing.JFrame {
             
             if (alumnoModel.registrar(alumno)) {
                 JOptionPane.showMessageDialog(null, "Registro guardado");
+                limpiar();
             }else{
                 JOptionPane.showMessageDialog(null, "Error al guardar");
             }
@@ -244,7 +245,15 @@ public class RegistrarEstudiante extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_txtRegistrarActionPerformed
-
+    
+    private void limpiar(){
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtContraseña.setText("");
+        txtContraseña2.setText("");
+        txtCorreo.setText("");
+        txtUsuario.setText("");
+    }
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel3MouseClicked
