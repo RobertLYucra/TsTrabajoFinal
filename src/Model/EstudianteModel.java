@@ -7,6 +7,8 @@ package Model;
 
 import Beans.Estudiante;
 import Conexion.Conexion;
+import static Conexion.Conexion.ObtenerConexion;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -71,6 +73,30 @@ public class EstudianteModel {
         Logger.getLogger(EstudianteModel.class.getName()).log(Level.SEVERE, null, e);
     }
     return dato;     
- }
+    }
+    
+    //Registrar Estudiante
+    
+    public boolean registrar(Estudiante est)
+    {
+        PreparedStatement ps = null;
+        Connection con = ObtenerConexion();
+        
+        String sql = "INSERT INTO Estudiante (nombre, apellidos, correo, usuario, contrasena) VALUES (?, ?, ?, ?, ?)";
+        
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, est.getNombre());
+            ps.setString(2, est.getApellidos());
+            ps.setString(3, est.getCorreo());
+            ps.setString(4, est.getUsuario());
+            ps.setString(5, est.getContrasena());
+            ps.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(EstudianteModel.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }   
 
 }
