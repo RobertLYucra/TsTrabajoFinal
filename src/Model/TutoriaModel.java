@@ -41,7 +41,7 @@ public class TutoriaModel {
                 String t = resultSet.getString("u.apellidos");
                 String v = resultSet.getString("c.nombre");
 
-                Object[] dato = new Object[]{p,q,r+t,v};
+                Object[] dato = new Object[]{p,q,r+" "+t,v};
                 lst.add(dato);
             }
 
