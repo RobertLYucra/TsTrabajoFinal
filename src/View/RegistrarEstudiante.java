@@ -7,7 +7,8 @@ package View;
 
 import Beans.Estudiante;
 import Model.EstudianteModel;
-import Model.Hash;
+import Util.Hash;
+import Util.TextPrompt;
 import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import javax.swing.JOptionPane;
 
@@ -237,6 +238,8 @@ public class RegistrarEstudiante extends javax.swing.JFrame {
             if (alumnoModel.registrar(alumno)) {
                 JOptionPane.showMessageDialog(null, "Registro guardado");
                 limpiar();
+                this.hide();
+                    new LoginEstudiante().show();
             }else{
                 JOptionPane.showMessageDialog(null, "Error al guardar");
             }

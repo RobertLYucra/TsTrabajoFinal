@@ -16,4 +16,8 @@ public class EstudianteController {
     public int ValidarEstControlador(String usu,String pass){
         return new EstudianteModel().ValidarEstudiante(usu,pass);
     }
+    public int CapturarIDcontrollwe(String usu,String pass){
+        return new EstudianteModel().CapturarID(usu,pass);
+    }
+            
 }

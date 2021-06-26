@@ -14,40 +14,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+
 
 /**
  *
  * @author RobertLY
  */
 public class EstudianteModel {
-    /*public int ValidarEstudiante(String usu,String cont){
-        int dato=10; 
-        String sql = "Select COUNT(*) FROM estudiante where usuario=? and contrasena=?";
-        //String sql="SELECT COUNT(*) FROM Estudiante WHERE usuario='?' and contrasena='?'";
-        try{ 
-            ResultSet resultSet; 
-
-            PreparedStatement s = Conexion.ObtenerConexion().prepareStatement(sql);//AQUI SE AGREGA EL SQL 
-            s.setString(1,usu);
-            s.setString(2,cont);
-
-            //resultSet = s.executeQuery(sql); EL ERROR QUITA EL SQL :) AL COPIAR Y PEGAR SE FILTRO
-            resultSet = s.executeQuery();
-
-            while(resultSet.next()){
-                dato = resultSet.getInt(1);
-            }
-
-            Conexion.ObtenerConexion().close();
-            s.close();
-            resultSet.close();
-            return dato;
-        }catch(SQLException e){
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-        return dato;     
-     }*/
+    
     public int ValidarEstudiante(String usu,String pass){
     int dato=10;        
     String sql="SELECT 	COUNT(*) FROM Estudiante WHERE usuario=? and contrasena=?";
@@ -97,6 +71,36 @@ public class EstudianteModel {
             Logger.getLogger(EstudianteModel.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-    }   
-
+    }
+    
+    public int CapturarID(String usu,String pass){
+    int dato=10;        
+    String sql="SELECT 	idEst FROM Estudiante WHERE usuario=? and contrasena=?";
+    try{ 
+        ResultSet resultSet; 
+        
+        PreparedStatement s = Conexion.ObtenerConexion().prepareStatement(sql);//AQUI SE AGREGA EL SQL 
+        s.setString(1,usu);
+        s.setString(2,pass);
+      
+        //resultSet = s.executeQuery(sql); EL ERROR QUITA EL SQL :) AL COPIAR Y PEGAR SE FILTRO
+        resultSet = s.executeQuery();
+        
+        while(resultSet.next()){
+            
+            dato = resultSet.getInt("idEst");
+        }
+      
+        Conexion.ObtenerConexion().close();
+        s.close();
+        resultSet.close();
+        return dato;
+    }catch(SQLException e){
+        Logger.getLogger(EstudianteModel.class.getName()).log(Level.SEVERE, null, e);
+    }
+    return dato;     
+    }
+    
+    
+    
 }

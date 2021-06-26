@@ -5,6 +5,7 @@
  */
 package View;
 
+import Util.TextPrompt;
 import Beans.Estudiante;
 import Controller.EstudianteController;
 import javax.swing.JOptionPane;
@@ -27,6 +28,7 @@ public class LoginEstudiante extends javax.swing.JFrame {
         TextPrompt usu = new TextPrompt("Usuario", txtusuario);
         TextPrompt cont = new TextPrompt("Contraseña", txtContraseña);
     }
+    public static int id = 0;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,6 +46,7 @@ public class LoginEstudiante extends javax.swing.JFrame {
         txtContraseña = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,6 +84,11 @@ public class LoginEstudiante extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 0, 0));
@@ -90,6 +98,8 @@ public class LoginEstudiante extends javax.swing.JFrame {
                 jLabel3MouseClicked(evt);
             }
         });
+
+        jLabel4.setText("jLabel4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,6 +120,10 @@ public class LoginEstudiante extends javax.swing.JFrame {
                                 .addComponent(txtusuario)
                                 .addComponent(txtContraseña)))))
                 .addContainerGap(99, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,7 +139,9 @@ public class LoginEstudiante extends javax.swing.JFrame {
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(jLabel3)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(32, 32, 32))
         );
 
         pack();
@@ -142,18 +158,28 @@ public class LoginEstudiante extends javax.swing.JFrame {
         int valorObtenido = 
                 new EstudianteController().ValidarEstControlador(this.txtusuario.getText(),this.txtContraseña.getText());
         
+        int idobtenido = 
+                new EstudianteController().CapturarIDcontrollwe(this.txtusuario.getText(),this.txtContraseña.getText());
+        
         if(valorObtenido==1){
             this.hide();
             new VistaEstudiante().show();
+            //jLabel4.setText(""+idobtenido);
+            id = idobtenido;
+            
         }
         else
-            JOptionPane.showMessageDialog(this,"Ingrese una contraseña correcta");
+            JOptionPane.showMessageDialog(this,"Usuario o contraseña incorrecta");
             
         
         
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
+    
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1KeyPressed
 
     /**
      * @param args the command line arguments
@@ -196,6 +222,7 @@ public class LoginEstudiante extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField txtContraseña;
     private javax.swing.JTextField txtusuario;
