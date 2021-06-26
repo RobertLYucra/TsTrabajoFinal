@@ -52,7 +52,7 @@ public class TutoriaModel {
             return lst;
         }catch(SQLException e){
             
-            System.out.println("Algo salió mal :(" + e.getMessage());
+            System.out.println("Algo salió mal -.- :(" + e.getMessage());
         }
         return null;     
      }
