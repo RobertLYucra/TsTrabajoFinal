@@ -233,6 +233,19 @@ public class RegistrarEstudiante extends javax.swing.JFrame {
             
         }else{
         if (pass.equals(passCon)) {
+            if (alumnoModel.existeUsuario(txtUsuario.getText()) == 0) {
+                
+                if (alumnoModel.esEmail(txtCorreo.getText())) {
+                    
+                
+                
+                String nuevoPass = Hash.sha1(pass);
+            
+                alumno.setNombre(txtNombre.getText());
+                alumno.setContraseña(nuevoPass);
+                alumno.setApellidos(txtApellido.getText());
+                alumno.setCorreo(txtCorreo.getText());
+                alumno.setUsuario(txtUsuario.getText());
             
             
             if (alumnoModel.registrar(alumno)) {
@@ -240,6 +253,12 @@ public class RegistrarEstudiante extends javax.swing.JFrame {
                 limpiar();
                 this.hide();
                     new LoginEstudiante().show();
+            }else{
+                    JOptionPane.showMessageDialog(null, "Error al guardar");
+                }
+            } else {
+                    JOptionPane.showMessageDialog(null, "El Correo no es válido");
+                }
             }else{
                JOptionPane.showMessageDialog(null, "El usuario ya esta registrado"); 
             }
