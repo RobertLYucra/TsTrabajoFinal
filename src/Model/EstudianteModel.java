@@ -14,6 +14,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -111,10 +113,8 @@ public class EstudianteModel {
             ps = con.prepareStatement(sql);
             ps.setString(1, usuario);
             rs = ps.executeQuery();
-           
-            ps.execute();
             
-            if (rs.next()) {
+            if(rs.next()) {
                 return rs.getInt(1);
             }
             
@@ -125,5 +125,14 @@ public class EstudianteModel {
             return 1;
         }
     }   
+    
+    public boolean esEmail(String correo) {
+
+        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+´)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+
+        Matcher mather = pattern.matcher(correo);
+        return mather.find();
+
+    }
 
 }
