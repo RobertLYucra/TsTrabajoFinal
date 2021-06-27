@@ -7,7 +7,8 @@ package View;
 
 import Beans.Estudiante;
 import Model.EstudianteModel;
-import Model.Hash;
+import Util.Hash;
+import Util.TextPrompt;
 import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import javax.swing.JOptionPane;
 
@@ -234,30 +235,11 @@ public class RegistrarEstudiante extends javax.swing.JFrame {
         if (pass.equals(passCon)) {
             
             
-            
-            if (alumnoModel.existeUsuario(txtUsuario.getText()) == 0) {
-                
-                if (alumnoModel.esEmail(txtCorreo.getText())) {
-                    
-                
-                
-                String nuevoPass = Hash.sha1(pass);
-            
-                alumno.setNombre(txtNombre.getText());
-                alumno.setContraseña(nuevoPass);
-                alumno.setApellidos(txtApellido.getText());
-                alumno.setCorreo(txtCorreo.getText());
-                alumno.setUsuario(txtUsuario.getText());
-            
-                if (alumnoModel.registrar(alumno)) {
-                    JOptionPane.showMessageDialog(null, "Registro guardado");
-                    limpiar();
-                }else{
-                    JOptionPane.showMessageDialog(null, "Error al guardar");
-                }
-                } else {
-                    JOptionPane.showMessageDialog(null, "El Correo no es válido");
-                }
+            if (alumnoModel.registrar(alumno)) {
+                JOptionPane.showMessageDialog(null, "Registro guardado");
+                limpiar();
+                this.hide();
+                    new LoginEstudiante().show();
             }else{
                JOptionPane.showMessageDialog(null, "El usuario ya esta registrado"); 
             }
