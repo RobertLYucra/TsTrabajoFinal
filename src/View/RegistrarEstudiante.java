@@ -225,7 +225,17 @@ public class RegistrarEstudiante extends javax.swing.JFrame {
         String pass = new String(txtContraseña.getPassword());
         String passCon = new String(txtContraseña2.getPassword());
         
+        if (txtUsuario.getText().equals("") || txtContraseña.equals("") || txtContraseña2.equals("")|| txtApellido.getText().equals("")||
+                txtCorreo.getText().equals("")||txtUsuario.getText().equals("")) {
+            
+            JOptionPane.showMessageDialog(null, "Hay campos vacios, debe llenar todos los campos");
+            
+        }else{
         if (pass.equals(passCon)) {
+            
+            if (alumnoModel.existeUsuario(txtUsuario.getText()) == 0) {
+                
+            
             String nuevoPass = Hash.sha1(pass);
             
             alumno.setNombre(txtNombre.getText());
@@ -240,10 +250,13 @@ public class RegistrarEstudiante extends javax.swing.JFrame {
             }else{
                 JOptionPane.showMessageDialog(null, "Error al guardar");
             }
+            }else{
+               JOptionPane.showMessageDialog(null, "El usuario ya existe"); 
+            }
         }else{
             JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
         }
-        
+        }
     }//GEN-LAST:event_txtRegistrarActionPerformed
     
     private void limpiar(){

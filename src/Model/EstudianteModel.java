@@ -97,6 +97,33 @@ public class EstudianteModel {
             Logger.getLogger(EstudianteModel.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
+    }
+    
+    public int existeUsuario(String usuario)
+    {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Connection con = ObtenerConexion();
+        
+        String sql = "SELECT count(idEst) FROM Estudiante WHERE usuario = ?";
+        
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, usuario);
+            rs = ps.executeQuery();
+           
+            ps.execute();
+            
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            
+            return 1;
+          
+        } catch (SQLException ex) {
+            Logger.getLogger(EstudianteModel.class.getName()).log(Level.SEVERE, null, ex);
+            return 1;
+        }
     }   
 
 }
