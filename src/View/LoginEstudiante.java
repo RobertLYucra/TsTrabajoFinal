@@ -161,12 +161,11 @@ public class LoginEstudiante extends javax.swing.JFrame {
         int idobtenido = 
                 new EstudianteController().CapturarIDcontrollwe(this.txtusuario.getText(),this.txtContraseña.getText());
         
+        id = idobtenido;
+        
         if(valorObtenido==1){
             this.hide();
-            new VistaEstudiante().show();
-            //jLabel4.setText(""+idobtenido);
-            id = idobtenido;
-            
+            new VistaEstudiante().show();  
         }
         else
             JOptionPane.showMessageDialog(this,"Usuario o contraseña incorrecta");
