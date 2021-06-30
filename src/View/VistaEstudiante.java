@@ -39,7 +39,7 @@ public class VistaEstudiante extends javax.swing.JFrame {
     }
     
     public void listar(){
-        List<Object[]> lst = new TutoriaController().ListarEstcontroller(LoginEstudiante.id);
+        List<Object[]> lst = new TutoriaController().ListarEstTutorias(LoginEstudiante.id);
         //dtm.setRowCount(0);
         int cont = 0;
         for(Object[] datoTut:lst){
