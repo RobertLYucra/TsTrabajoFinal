@@ -6,8 +6,8 @@
 package View;
 
 import Util.TextPrompt;
-import Controller.EstudianteController;
-import Controller.ProfesorController;
+import Controllers.EstudianteController;
+import Controllers.ProfesorController;
 import javax.swing.JOptionPane;
 
 /**

@@ -7,7 +7,7 @@ package View;
 
 import Util.TextPrompt;
 import Beans.Estudiante;
-import Controller.EstudianteController;
+import Controllers.EstudianteController;
 import javax.swing.JOptionPane;
 
 /**

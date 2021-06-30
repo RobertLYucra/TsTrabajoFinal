@@ -6,8 +6,8 @@
 package View;
 
 import Beans.Estudiante;
-import Controller.EstudianteController;
-import Controller.Programaclasecontroller;
+import Controllers.EstudianteController;
+import Controllers.Programaclasecontroller;
 import static View.LoginEstudiante.id;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
