@@ -19,7 +19,6 @@ import javax.swing.table.DefaultTableModel;
 public class VistaEstudiante extends javax.swing.JFrame {
     DefaultTableModel dtm = new DefaultTableModel();
     Tutoriacontroller tucon = new  Tutoriacontroller();
-    int a = 1;
     /**
      * Creates new form VistaAlumno
      */
@@ -41,7 +40,7 @@ public class VistaEstudiante extends javax.swing.JFrame {
     public void listar(){
         //Tutoria a = new Tutoria();
         //a.setIdEst(1);
-        List<Object[]> lst = new Tutoriacontroller().ListarTutorias(a);
+        List<Object[]> lst = new Tutoriacontroller().ListarTutorias(1);
         //dtm.setRowCount(0);
         int cont = 0;
         for(Object[] datoTut:lst){

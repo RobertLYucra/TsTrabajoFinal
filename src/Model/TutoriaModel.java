@@ -29,16 +29,16 @@ public class TutoriaModel {
             List<Object[]> lst = new ArrayList<Object[]>();
             ResultSet resultSet; 
 
-            CallableStatement s = Conexion.ObtenerConexion().prepareCall("{call st_listar(?)}");
+            CallableStatement s = Conexion.ObtenerConexion().prepareCall("{call stp_listar(?)}");
             s.setInt(1,a);
            //resultSet = (ResultSet) s.getObject(1);
 
             resultSet = s.executeQuery();
             while(resultSet.next()){
-                String p = resultSet.getString("t.fecha");
-                String q = resultSet.getString("t.hora");
-                String r = resultSet.getString("u.nombre");
-                String t = resultSet.getString("u.apellidos");
+                String p = resultSet.getString("p.fecha");
+                String q = resultSet.getString("p.hora");
+                String r = resultSet.getString("t.nombre");
+                String t = resultSet.getString("t.apellidos");
                 String v = resultSet.getString("c.nombre");
 
                 Object[] dato = new Object[]{p,q,r+" "+t,v};
