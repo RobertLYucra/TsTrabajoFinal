@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Model.TutorModel;
+import Model.ProfesorModel;
 
 /**
  *
@@ -13,6 +13,6 @@ import Model.TutorModel;
  */
 public class TutorController {
      public int ValidarTutControlador(String usu,String pass){
-        return new TutorModel().ValidarTutor(usu,pass);
+        return new ProfesorModel().ValidarTutor(usu,pass);
     }
 }

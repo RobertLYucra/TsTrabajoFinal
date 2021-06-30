@@ -7,6 +7,7 @@ package Controller;
 
 import Beans.Estudiante;
 import Model.EstudianteModel;
+import java.util.List;
 
 /**
  *
@@ -19,5 +20,9 @@ public class EstudianteController {
     public int CapturarIDcontrollwe(String usu,String pass){
         return new EstudianteModel().CapturarID(usu,pass);
     }
+    
+   public List<Estudiante> VistaEstcontroller(Estudiante es){
+       return new  EstudianteModel().VistaEst(es);
+   }
             
 }

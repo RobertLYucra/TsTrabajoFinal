@@ -9,35 +9,27 @@ package Beans;
  *
  * @author RobertLY
  */
-public class Tutoria {
-    private int idTutoria ;
+public class ProgramaClase {
+    private int idprogramaclase ;
     private String fecha  ;
     private String hora  ;
-    private String descripcion ;
-    private int idEst;
+    private String idZoom ;
     private int idTut;
     private int idCurso;
 
-    public Tutoria(int idTutoria, String fecha, String hora, String descripcion, int idEst, int idTut, int idCurso) {
-        this.idTutoria = idTutoria;
+    public ProgramaClase(int idprogramaclase, String fecha, String hora, String idZoom, int idTut, int idCurso) {
+        this.idprogramaclase = idprogramaclase;
         this.fecha = fecha;
         this.hora = hora;
-        this.descripcion = descripcion;
-        this.idEst = idEst;
+        this.idZoom = idZoom;
         this.idTut = idTut;
         this.idCurso = idCurso;
     }
-    public Tutoria  (){
+    public ProgramaClase  (){
         
     }
 
-    public int getIdTutoria() {
-        return idTutoria;
-    }
-
-    public void setIdTutoria(int idTutoria) {
-        this.idTutoria = idTutoria;
-    }
+ 
 
     public String getFecha() {
         return fecha;
@@ -55,21 +47,22 @@ public class Tutoria {
         this.hora = hora;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public int getIdprogramaclase() {
+        return idprogramaclase;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setIdprogramaclase(int idprogramaclase) {
+        this.idprogramaclase = idprogramaclase;
     }
 
-    public int getIdEst() {
-        return idEst;
+    public String getIdZoom() {
+        return idZoom;
     }
 
-    public void setIdEst(int idEst) {
-        this.idEst = idEst;
+    public void setIdZoom(String idZoom) {
+        this.idZoom = idZoom;
     }
+
 
     public int getIdTut() {
         return idTut;

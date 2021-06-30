@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Model.TutoriaModel;
+import Model.ProgramaclaseModel;
 import java.util.List;
 
 /**
@@ -14,6 +14,6 @@ import java.util.List;
  */
 public class Tutoriacontroller {
     public List<Object[]> ListarTutorias(int a){
-        return new TutoriaModel().ListarTutoriasPorEst(a);
+        return new ProgramaclaseModel().ListarTutoriasPorEst(a);
     }
 }

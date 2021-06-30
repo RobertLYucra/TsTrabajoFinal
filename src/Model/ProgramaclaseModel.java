@@ -6,8 +6,8 @@
 package Model;
 
 import Beans.Curso;
-import Beans.Tutor;
-import Beans.Tutoria;
+import Beans.Profesor;
+import Beans.ProgramaClase;
 import Conexion.Conexion;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
@@ -19,7 +19,7 @@ import java.util.List;
  *
  * @author RobertLY
  */
-public class TutoriaModel {
+public class ProgramaclaseModel {
     
     public List<Object[]> ListarTutoriasPorEst(int a){
         //String sql="SELECT t.fecha, t.hora, e.nombre, u.nombre, c.nombre FROM Tutoria t LEFT JOIN Estudiante e ON e.idEst = t.idEst LEFT JOIN Tutor u ON u.idTut = t.idTut LEFT JOIN Curso c ON c.idCurso = t.idCurso WHERE e.idEst=? ";

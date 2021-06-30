@@ -13,6 +13,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -110,8 +112,7 @@ public class EstudianteModel {
     }
     
     public int CapturarID(String usu,String pass){
-    int id=10;        
-    String sql="SELECT 	idEst FROM Estudiante WHERE usuario=? and contrasena=?";
+    int id=0;        
     try{ 
         ResultSet resultSet; 
 
@@ -124,7 +125,7 @@ public class EstudianteModel {
         
         while(resultSet.next()){
             
-            id = resultSet.getInt("idEst");
+            id = resultSet.getInt("idEstudiante");
         }
       
         Conexion.ObtenerConexion().close();
@@ -136,6 +137,33 @@ public class EstudianteModel {
     }
     return id;     
     }
+    
+    public List<Estudiante> VistaEst(Estudiante es){
+    try{ 
+        List<Estudiante> lst = new ArrayList<Estudiante>();
+        ResultSet resultSet; 
+        CallableStatement s = Conexion.ObtenerConexion().prepareCall("{call stp_vistaest(?)}");
+        s.setInt(1,es.getIdEst());
+        //resultSet = s.executeQuery(sql); EL ERROR QUITA EL SQL :) AL COPIAR Y PEGAR SE FILTRO
+        resultSet = s.executeQuery();
+        while(resultSet.next()){
+            Estudiante est = new Estudiante();
+            est.setNombre(resultSet.getString("nombre"));
+            est.setApellidos(resultSet.getString("apellido"));
+            est.setCorreo(resultSet.getString("correo"));
+            lst.add(est);
+        }
+      
+        Conexion.ObtenerConexion().close();
+        s.close();
+        resultSet.close();
+        return lst;
+    }catch(SQLException e){
+        Logger.getLogger(EstudianteModel.class.getName()).log(Level.SEVERE, null, e);
+    }
+    return null;     
+    }
+   
     
     
     
