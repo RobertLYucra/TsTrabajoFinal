@@ -14,14 +14,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author RobertLY
  */
 public class ProgramaclaseModel {
-    
-    public List<Object[]> ListarTutoriasPorEst(int a){
+      
+    public List<Object[]> ListarTutoriasTut(){
         //String sql="SELECT t.fecha, t.hora, e.nombre, u.nombre, c.nombre FROM Tutoria t LEFT JOIN Estudiante e ON e.idEst = t.idEst LEFT JOIN Tutor u ON u.idTut = t.idTut LEFT JOIN Curso c ON c.idCurso = t.idCurso WHERE e.idEst=? ";
         //String sql2 = "select idTutoria, fecha, hora, idTut,idCurso from tutoria where idEst=?";
         
@@ -29,19 +31,18 @@ public class ProgramaclaseModel {
             List<Object[]> lst = new ArrayList<Object[]>();
             ResultSet resultSet; 
 
-            CallableStatement s = Conexion.ObtenerConexion().prepareCall("{call stp_listar(?)}");
-            s.setInt(1,a);
+            CallableStatement s = Conexion.ObtenerConexion().prepareCall("{call stp_listarPro()}");
            //resultSet = (ResultSet) s.getObject(1);
-
             resultSet = s.executeQuery();
             while(resultSet.next()){
-                String p = resultSet.getString("p.fecha");
-                String q = resultSet.getString("p.hora");
-                String r = resultSet.getString("t.nombre");
-                String t = resultSet.getString("t.apellido");
+                
+                String p = resultSet.getString("t.fecha");
+                String q = resultSet.getString("t.hora");
+                String r = resultSet.getString("p.nombre");
+                String t = resultSet.getString("p.apellido");
                 String v = resultSet.getString("c.nombre");
 
-                Object[] dato = new Object[]{p,q,r+" "+t,v};
+                Object[] dato = new Object[]{p,q,r,t,v};
                 lst.add(dato);
             }
 
@@ -56,5 +57,34 @@ public class ProgramaclaseModel {
         }
         return null;     
      }
+    
+     public List<Object[]> BuscarPro(String  curso){
+       try{
+        List<Object[]> lst = new ArrayList<Object[]>();
+        ResultSet resultSet; 
+        CallableStatement s = Conexion.ObtenerConexion().prepareCall("{call stp_buscarPro(?)}");
+        s.setString(1, curso);
+        resultSet = s.executeQuery();
+            while(resultSet.next()){
+               String p = resultSet.getString("t.fecha");
+                String q = resultSet.getString("t.hora");
+                String r = resultSet.getString("p.nombre");
+                String t = resultSet.getString("p.apellido");
+                String v = resultSet.getString("c.nombre");
+                
+                Object[] dato = new Object[]{p,q,r,t,v};
+                lst.add(dato);
+           }
+           Conexion.ObtenerConexion().close();
+            s.close();
+            resultSet.close();
+
+            return lst;
+       }catch(SQLException ex){
+            Logger.getLogger(ProgramaclaseModel.class.getName()).log(Level.SEVERE, null, ex);       
+       }
+       return null;
+    }
+     
     }
 

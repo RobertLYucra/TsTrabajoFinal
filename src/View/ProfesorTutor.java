@@ -7,7 +7,7 @@ package View;
 
 import Util.TextPrompt;
 import Controller.EstudianteController;
-import Controller.TutorController;
+import Controller.ProfesorController;
 import javax.swing.JOptionPane;
 
 /**
@@ -120,7 +120,7 @@ public class ProfesorTutor extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         int valorObtenido = 
-                new TutorController().ValidarTutControlador(this.txtusuario.getText(),this.txtContraseña.getText());
+                new ProfesorController().ValidarTutControlador(this.txtusuario.getText(),this.txtContraseña.getText());
         
         if(valorObtenido==1){
             this.hide();

@@ -11,7 +11,7 @@ import Model.ProfesorModel;
  *
  * @author RobertLY
  */
-public class TutorController {
+public class ProfesorController {
      public int ValidarTutControlador(String usu,String pass){
         return new ProfesorModel().ValidarTutor(usu,pass);
     }
