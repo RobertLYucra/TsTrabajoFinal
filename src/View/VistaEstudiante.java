@@ -39,7 +39,7 @@ public class VistaEstudiante extends javax.swing.JFrame {
     }
     
     public void listar(){
-        List<Object[]> lst = new TutoriaController().ListarTutcontroller(LoginEstudiante.id);
+        List<Object[]> lst = new TutoriaController().ListarEstcontroller(LoginEstudiante.id);
         //dtm.setRowCount(0);
         int cont = 0;
         for(Object[] datoTut:lst){
@@ -231,7 +231,7 @@ public class VistaEstudiante extends javax.swing.JFrame {
     private void txtbuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyReleased
         // TODO add your handling code here:
         String ncurso = txtbuscar.getText();
-        List<Object[]> lst = new TutoriaController().buscarTutcontroller(id,ncurso);
+        List<Object[]> lst = new TutoriaController().buscarEstcontroller(id,ncurso);
         dtm.setRowCount(0);
         for(Object[] x:lst){
             dtm.addRow(x);
