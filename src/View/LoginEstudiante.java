@@ -44,7 +44,7 @@ public class LoginEstudiante extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtusuario = new javax.swing.JTextField();
         txtContraseña = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        btnIniciarSesion = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -76,17 +76,17 @@ public class LoginEstudiante extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Tutoria logo.png"))); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(51, 153, 255));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setText("INICIAR SESIÓN");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnIniciarSesion.setBackground(new java.awt.Color(51, 153, 255));
+        btnIniciarSesion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnIniciarSesion.setText("INICIAR SESIÓN");
+        btnIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnIniciarSesionActionPerformed(evt);
             }
         });
-        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+        btnIniciarSesion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButton1KeyPressed(evt);
+                btnIniciarSesionKeyPressed(evt);
             }
         });
 
@@ -110,7 +110,7 @@ public class LoginEstudiante extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(147, 147, 147)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(104, 104, 104)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,7 +136,7 @@ public class LoginEstudiante extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
@@ -153,7 +153,7 @@ public class LoginEstudiante extends javax.swing.JFrame {
             new RegistrarEstudiante().show();
     }//GEN-LAST:event_jLabel3MouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
         // TODO add your handling code here:
         int valorObtenido = 
                 new EstudianteController().ValidarEstControlador(this.txtusuario.getText(),this.txtContraseña.getText());
@@ -174,11 +174,11 @@ public class LoginEstudiante extends javax.swing.JFrame {
         
         
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnIniciarSesionActionPerformed
     
-    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+    private void btnIniciarSesionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnIniciarSesionKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1KeyPressed
+    }//GEN-LAST:event_btnIniciarSesionKeyPressed
 
     /**
      * @param args the command line arguments
@@ -217,7 +217,7 @@ public class LoginEstudiante extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnIniciarSesion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

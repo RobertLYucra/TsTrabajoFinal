@@ -30,8 +30,8 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnTutor = new javax.swing.JButton();
+        btnEstudiante = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -61,19 +61,19 @@ public class JFPrincipal extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
-        jButton1.setBackground(new java.awt.Color(51, 153, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Tutor.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnTutor.setBackground(new java.awt.Color(51, 153, 255));
+        btnTutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Tutor.png"))); // NOI18N
+        btnTutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnTutorActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(51, 153, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Alumno.png"))); // NOI18N
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnEstudiante.setBackground(new java.awt.Color(51, 153, 255));
+        btnEstudiante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Alumno.png"))); // NOI18N
+        btnEstudiante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnEstudianteActionPerformed(evt);
             }
         });
 
@@ -100,8 +100,8 @@ public class JFPrincipal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel2))
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTutor, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -109,11 +109,11 @@ public class JFPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(105, 105, 105)
-                .addComponent(jButton1)
+                .addComponent(btnTutor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(btnEstudiante)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addGap(74, 74, 74))
@@ -122,17 +122,17 @@ public class JFPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnTutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTutorActionPerformed
         // TODO add your handling code here:
         this.hide();
             new ProfesorTutor().show();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnTutorActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstudianteActionPerformed
         // TODO add your handling code here:
         this.hide();
             new LoginEstudiante().show();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnEstudianteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,8 +170,8 @@ public class JFPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnEstudiante;
+    private javax.swing.JButton btnTutor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
