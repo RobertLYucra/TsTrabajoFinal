@@ -38,7 +38,7 @@ public class TutoriaModel {
                 String p = resultSet.getString("p.fecha");
                 String q = resultSet.getString("p.hora");
                 String r = resultSet.getString("t.nombre");
-                String t = resultSet.getString("t.apellidos");
+                String t = resultSet.getString("t.apellido");
                 String v = resultSet.getString("c.nombre");
 
                 Object[] dato = new Object[]{p,q,r+" "+t,v};
