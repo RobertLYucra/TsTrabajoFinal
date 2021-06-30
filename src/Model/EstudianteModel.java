@@ -8,6 +8,7 @@ package Model;
 import Beans.Estudiante;
 import Conexion.Conexion;
 import static Conexion.Conexion.ObtenerConexion;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,11 +27,10 @@ public class EstudianteModel {
     
     public int ValidarEstudiante(String usu,String pass){
     int dato=10;        
-    String sql="SELECT 	COUNT(*) FROM Estudiante WHERE Usuario=? and Contraseña=?";
     try{ 
         ResultSet resultSet; 
-        
-        PreparedStatement s = Conexion.ObtenerConexion().prepareStatement(sql);//AQUI SE AGREGA EL SQL 
+
+        CallableStatement s = Conexion.ObtenerConexion().prepareCall("{call stp_validar(?,?)}");
         s.setString(1,usu);
         s.setString(2,pass);
       
@@ -110,12 +110,12 @@ public class EstudianteModel {
     }
     
     public int CapturarID(String usu,String pass){
-    int dato=10;        
+    int id=10;        
     String sql="SELECT 	idEst FROM Estudiante WHERE usuario=? and contrasena=?";
     try{ 
         ResultSet resultSet; 
-        
-        PreparedStatement s = Conexion.ObtenerConexion().prepareStatement(sql);//AQUI SE AGREGA EL SQL 
+
+        CallableStatement s = Conexion.ObtenerConexion().prepareCall("{call stp_capturarid(?,?)}");
         s.setString(1,usu);
         s.setString(2,pass);
       
@@ -124,17 +124,17 @@ public class EstudianteModel {
         
         while(resultSet.next()){
             
-            dato = resultSet.getInt("idEst");
+            id = resultSet.getInt("idEst");
         }
       
         Conexion.ObtenerConexion().close();
         s.close();
         resultSet.close();
-        return dato;
+        return id;
     }catch(SQLException e){
         Logger.getLogger(EstudianteModel.class.getName()).log(Level.SEVERE, null, e);
     }
-    return dato;     
+    return id;     
     }
     
     
