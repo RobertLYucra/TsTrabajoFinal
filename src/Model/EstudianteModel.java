@@ -26,7 +26,7 @@ public class EstudianteModel {
     
     public int ValidarEstudiante(String usu,String pass){
     int dato=10;        
-    String sql="SELECT 	COUNT(*) FROM Estudiante WHERE usuario=? and contrasena=?";
+    String sql="SELECT 	COUNT(*) FROM Estudiante WHERE Usuario=? and Contraseña=?";
     try{ 
         ResultSet resultSet; 
         
