@@ -14,7 +14,7 @@ import java.util.List;
  * @author RobertLY
  */
 public class TutoriaController {
-     public List<Object[]> ListarEstcontroller(int id){
+    public List<Object[]> ListarEstcontroller(int id){
         return new TutoriaModel().ListarTutoriasPorEst(id);
     }
      

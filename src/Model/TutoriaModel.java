@@ -61,7 +61,7 @@ public class TutoriaModel {
             List<Object[]> lst = new ArrayList<Object[]>();
             ResultSet resultSet; 
 
-            CallableStatement s = Conexion.ObtenerConexion().prepareCall("{call stp_listarPro(?)}");
+            CallableStatement s = Conexion.ObtenerConexion().prepareCall("{call stp_listarProf(?)}");
             s.setInt(1,a);
             
             resultSet = s.executeQuery();
