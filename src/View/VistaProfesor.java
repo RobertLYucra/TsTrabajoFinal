@@ -5,17 +5,60 @@
  */
 package View;
 
+import Beans.Profesor;
+import Controllers.ProfesorController;
+import Controllers.TutoriaController;
+import static View.ProfesorTutor.id;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author RobertLY
  */
 public class VistaProfesor extends javax.swing.JFrame {
-
+    DefaultTableModel dtm = new DefaultTableModel();
+    ProfesorController procon = new ProfesorController();
     /**
      * Creates new form VistaTutor
      */
     public VistaProfesor() {
         initComponents();
+        setLocationRelativeTo(null);
+        
+        llenarColumna();
+        //listar();
+        MostrarU();
+    }
+    
+    public void llenarColumna(){
+        dtm.addColumn("Fecha");
+        dtm.addColumn("Hora");
+        //dtm.addColumn("Profesor");
+        dtm.addColumn("Curso");
+        this.TbTutoria.setModel(dtm);
+    }
+    
+    /*public void listar(){
+        List<Object[]> lst = new TutoriaController().ListarProcontroller(ProfesorTutor.id);
+        //dtm.setRowCount(0);
+        int cont = 0;
+        for(Object[] datoTut:lst){
+            dtm.addRow(datoTut);
+            cont ++;
+        }
+        TbTutoria.setModel(dtm);
+    }*/
+    public void MostrarU(){
+        Profesor e = new Profesor();
+        e.setIdTut(id);
+
+        List<Profesor> lst = new ProfesorController().VistaProcontroller(e);
+        for(Profesor pro:lst){
+            jLabel1.setText(pro.getNombre());
+            jLabel12.setText(pro.getApellidos());
+            jLabel3.setText(pro.getCorreo());
+        }
     }
 
     /**
