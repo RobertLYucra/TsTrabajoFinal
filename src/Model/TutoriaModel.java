@@ -55,6 +55,39 @@ public class TutoriaModel {
         return null;     
      }
     
+    public List<Object[]> ListarTutoriasPorPro(int a){
+       
+        try{ 
+            List<Object[]> lst = new ArrayList<Object[]>();
+            ResultSet resultSet; 
+
+            CallableStatement s = Conexion.ObtenerConexion().prepareCall("{call stp_listarPro(?)}");
+            s.setInt(1,a);
+            
+            resultSet = s.executeQuery();
+            while(resultSet.next()){
+                String p = resultSet.getString("p.fecha");
+                String q = resultSet.getString("p.hora");
+                String r = resultSet.getString("t.nombre");
+                String t = resultSet.getString("t.apellido");
+                String v = resultSet.getString("c.nombre");
+
+                Object[] dato = new Object[]{p,q,r+" "+t,v};
+                lst.add(dato);
+            }
+
+            Conexion.ObtenerConexion().close();
+            s.close();
+            resultSet.close();
+
+            return lst;
+        }catch(SQLException e){
+            
+            System.out.println("Algo salió mal -.- :(" + e.getMessage());
+        }
+        return null;     
+     }
+    
     public List<Object[]> BuscarTut(int  idest,String nombrec){
        try{
         List<Object[]> lst = new ArrayList<Object[]>();
