@@ -17,6 +17,11 @@ public class TutoriaController {
      public List<Object[]> ListarEstcontroller(int id){
         return new TutoriaModel().ListarTutoriasPorEst(id);
     }
+     
+     public List<Object[]> ListarProcontroller(int id){
+        return new TutoriaModel().ListarTutoriasPorPro(id);
+    }
+     
     public List<Object[]> buscarEstcontroller(int id,String curso){
         return new TutoriaModel().BuscarTut(id,curso);
     }
