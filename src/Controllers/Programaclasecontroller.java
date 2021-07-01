@@ -20,4 +20,8 @@ public class Programaclasecontroller {
     public List<Object[]> buscarProcontroller(String curso){
         return new ProgramaclaseModel().BuscarPro(curso);
     }
+    
+     public int CapturarIDcontrollwe(String fech,String hor, String nombrep,String apellidosp,String curso){
+        return new ProgramaclaseModel().CapturarID(fech,hor,nombrep,apellidosp,curso);
+    }
 }

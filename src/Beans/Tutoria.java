@@ -10,12 +10,14 @@ package Beans;
  * @author RobertLY
  */
 public class Tutoria {
-    private int idestudiante;
     private int idprogramaclase;
+    private int idestudiante;
+    
 
-    public Tutoria(int idestudiante, int idprogramaclase) {
-        this.idestudiante = idestudiante;
+    public Tutoria(int idprogramaclase, int idestudiante) {
+        
         this.idprogramaclase = idprogramaclase;
+        this.idestudiante = idestudiante;
     }
 
     public Tutoria(){

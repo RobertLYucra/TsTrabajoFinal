@@ -5,14 +5,17 @@
  */
 package Model;
 
+import Beans.Tutoria;
 import Conexion.Conexion;
 import java.sql.CallableStatement;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -79,6 +82,18 @@ public class TutoriaModel {
             Logger.getLogger(TutoriaModel.class.getName()).log(Level.SEVERE, null, ex);       
        }
        return null;
+    }
+    
+    public void InsertarTutoria(Tutoria t){
+        try {
+            ResultSet resultSet; 
+            CallableStatement s = Conexion.ObtenerConexion().prepareCall("{call stp_InsertTutoria(?,?)}");
+            s.setInt(1, t.getIdprogramaclase());
+            s.setInt(2, t.getIdestudiante());
+            resultSet = s.executeQuery();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error!!!!"+ ex.getMessage());
+        }
     }
     
 }
