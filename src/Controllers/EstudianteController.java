@@ -24,5 +24,9 @@ public class EstudianteController {
    public List<Estudiante> VistaEstcontroller(Estudiante es){
        return new  EstudianteModel().VistaEst(es);
    }
+   
+   public void registrarEstController(Estudiante e){
+       new EstudianteModel().registrar(e);
+   }
             
 }

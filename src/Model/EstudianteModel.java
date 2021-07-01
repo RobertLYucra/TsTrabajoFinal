@@ -55,20 +55,18 @@ public class EstudianteModel {
     //Registrar Estudiante
     
     public boolean registrar(Estudiante est)
-    {
-        PreparedStatement ps = null;
-        Connection con = ObtenerConexion();
-        
-        String sql = "INSERT INTO Estudiante (nombre, apellidos, correo, usuario, contrasena) VALUES (?, ?, ?, ?, ?)";
-        
+    {        
         try {
-            ps = con.prepareStatement(sql);
-            ps.setString(1, est.getNombre());
-            ps.setString(2, est.getApellidos());
-            ps.setString(3, est.getCorreo());
-            ps.setString(4, est.getUsuario());
-            ps.setString(5, est.getContrasena());
-            ps.execute();
+            ResultSet resultSet; 
+
+            CallableStatement s = Conexion.ObtenerConexion().prepareCall("{call stp_InsertarEst(?,?,?,?,?)}");
+            s.setString(1,est.getNombre());
+            s.setString(2,est.getApellidos());
+            s.setString(3,est.getCorreo());
+            s.setString(4,est.getUsuario());
+            s.setString(5,est.getContrasena());
+            
+            resultSet = s.executeQuery();
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(EstudianteModel.class.getName()).log(Level.SEVERE, null, ex);
@@ -78,23 +76,18 @@ public class EstudianteModel {
     
     public int existeUsuario(String usuario)
     {
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        Connection con = ObtenerConexion();
-        
-        String sql = "SELECT count(idEst) FROM Estudiante WHERE usuario = ?";
-        
+     
         try {
-            ps = con.prepareStatement(sql);
-            ps.setString(1, usuario);
-            rs = ps.executeQuery();
+            ResultSet resultSet; 
+            CallableStatement s = Conexion.ObtenerConexion().prepareCall("{call stp_existeusuario(?)}");
             
-            if(rs.next()) {
-                return rs.getInt(1);
+            s.setString(1, usuario);
+            resultSet = s.executeQuery();
+            
+            if(resultSet.next()) {
+                return s.getInt(1);
             }
-            
             return 1;
-          
         } catch (SQLException ex) {
             Logger.getLogger(EstudianteModel.class.getName()).log(Level.SEVERE, null, ex);
             return 1;

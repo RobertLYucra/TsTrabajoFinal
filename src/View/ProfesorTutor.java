@@ -23,6 +23,7 @@ public class ProfesorTutor extends javax.swing.JFrame {
         initComponents();
         placeholder();
         setLocationRelativeTo(null);
+        jLabel3.setText("Intentos: "+(intentos+1));
     }
     public void placeholder(){
         TextPrompt usu = new TextPrompt("Usuario", txtusuario);
@@ -45,6 +46,7 @@ public class ProfesorTutor extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,6 +85,8 @@ public class ProfesorTutor extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
+        jLabel3.setText("Intentos:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,7 +102,10 @@ public class ProfesorTutor extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtusuario)
-                            .addComponent(txtContraseña))))
+                            .addComponent(txtContraseña)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(213, 213, 213)
+                        .addComponent(jLabel3)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -107,7 +114,9 @@ public class ProfesorTutor extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
-                .addGap(65, 65, 65)
+                .addGap(33, 33, 33)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
                 .addComponent(txtusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -118,23 +127,39 @@ public class ProfesorTutor extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private int intentos=2;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        int valorObtenido = 
-                new ProfesorController().ValidarTutControlador(this.txtusuario.getText(),this.txtContraseña.getText());
         
-        int idobtenido = 
-                new ProfesorController().CapturarIDcontroller(this.txtusuario.getText(),this.txtContraseña.getText());
         
-        id = idobtenido;
-        
-        if(valorObtenido==1){
-            this.hide();
-            new VistaProfesor().show();
+        if(txtusuario.getText().length()==0 & txtContraseña.getText().length()==0){
+            JOptionPane.showMessageDialog(null, "Ingrese sus Datos...");
         }
-        else
-            JOptionPane.showMessageDialog(this,"Ingrese una contraseña correcta");
+        else{
+            int valorObtenido = 
+                    new ProfesorController().ValidarTutControlador(this.txtusuario.getText(),this.txtContraseña.getText());
+
+            int idobtenido = 
+                    new ProfesorController().CapturarIDcontroller(this.txtusuario.getText(),this.txtContraseña.getText());
+
+            id = idobtenido;
+
+            if(valorObtenido==1){
+                this.hide();
+                new VistaProfesor().show();
+            }
+            else{
+                JOptionPane.showMessageDialog(this,"Ingrese una contraseña correcta");
+                txtusuario.setText("");
+                txtContraseña.setText("");
+                if (intentos ==0){
+                    JOptionPane.showMessageDialog(this, "Limite de intentos, adios!!!!");
+                    this.dispose();
+                }
+            }
+            jLabel3.setText("Intentos: "+intentos );
+            intentos = intentos -1;
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -177,6 +202,7 @@ public class ProfesorTutor extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField txtContraseña;
     private javax.swing.JTextField txtusuario;

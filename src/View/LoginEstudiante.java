@@ -23,6 +23,7 @@ public class LoginEstudiante extends javax.swing.JFrame {
         initComponents();
         placeholder();
         setLocationRelativeTo(null);
+        jLabel4.setText("Intentos: "+(intentos+1));
     }
     public void placeholder(){
         TextPrompt usu = new TextPrompt("Usuario", txtusuario);
@@ -99,7 +100,7 @@ public class LoginEstudiante extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("jLabel4");
+        jLabel4.setText("Intentos:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,14 +117,15 @@ public class LoginEstudiante extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(40, 40, 40))
                                 .addComponent(txtusuario)
-                                .addComponent(txtContraseña)))))
-                .addContainerGap(99, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(26, 26, 26))
+                                .addComponent(txtContraseña))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(193, 193, 193)
+                        .addComponent(jLabel4)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,7 +133,9 @@ public class LoginEstudiante extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
-                .addGap(43, 43, 43)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addGap(11, 11, 11)
                 .addComponent(txtusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -139,9 +143,7 @@ public class LoginEstudiante extends javax.swing.JFrame {
                 .addComponent(btnIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addContainerGap())
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         pack();
@@ -152,10 +154,10 @@ public class LoginEstudiante extends javax.swing.JFrame {
         this.hide();
             new RegistrarEstudiante().show();
     }//GEN-LAST:event_jLabel3MouseClicked
-
+    private int intentos;
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
         // TODO add your handling code here:
-        int valorObtenido = 
+        /*int valorObtenido = 
                 new EstudianteController().ValidarEstControlador(this.txtusuario.getText(),this.txtContraseña.getText());
         
         int idobtenido = 
@@ -168,7 +170,36 @@ public class LoginEstudiante extends javax.swing.JFrame {
             new VistaEstudiante().show();  
         }
         else
-            JOptionPane.showMessageDialog(this,"Usuario o contraseña incorrecta");
+            JOptionPane.showMessageDialog(this,"Usuario o contraseña incorrecta");*/
+        
+        if(txtusuario.getText().length()==0 & txtContraseña.getText().length()==0){
+            JOptionPane.showMessageDialog(null, "Ingrese sus Datos...");
+        }
+        else{
+            int valorObtenido = 
+                new EstudianteController().ValidarEstControlador(this.txtusuario.getText(),this.txtContraseña.getText());
+        
+            int idobtenido = 
+                    new EstudianteController().CapturarIDcontrollwe(this.txtusuario.getText(),this.txtContraseña.getText());
+
+            id = idobtenido;
+            if(valorObtenido==1){
+                this.hide();
+                new VistaEstudiante().show();  
+            }
+            else{
+
+                JOptionPane.showMessageDialog(this,"Usuario o contraseña incorrecta");
+                txtusuario.setText("");
+                txtContraseña.setText("");
+                if (intentos ==0){
+                    JOptionPane.showMessageDialog(this, "Limite de intentos, adios!!!!");
+                    this.dispose();
+                }
+            }
+            jLabel4.setText("Intentos: "+intentos );
+            intentos = intentos -1;
+        }
             
         
         
