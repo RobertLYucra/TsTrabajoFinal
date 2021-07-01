@@ -28,6 +28,8 @@ public class ProfesorTutor extends javax.swing.JFrame {
         TextPrompt usu = new TextPrompt("Usuario", txtusuario);
         TextPrompt cont = new TextPrompt("Contraseña", txtContraseña);
     }
+    
+    public static int id = 0;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -121,6 +123,11 @@ public class ProfesorTutor extends javax.swing.JFrame {
         // TODO add your handling code here:
         int valorObtenido = 
                 new ProfesorController().ValidarTutControlador(this.txtusuario.getText(),this.txtContraseña.getText());
+        
+        int idobtenido = 
+                new ProfesorController().CapturarIDcontrollwe(this.txtusuario.getText(),this.txtContraseña.getText());
+        
+        id = idobtenido;
         
         if(valorObtenido==1){
             this.hide();
