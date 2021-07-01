@@ -125,7 +125,7 @@ public class ProfesorTutor extends javax.swing.JFrame {
                 new ProfesorController().ValidarTutControlador(this.txtusuario.getText(),this.txtContraseña.getText());
         
         int idobtenido = 
-                new ProfesorController().CapturarIDcontrollwe(this.txtusuario.getText(),this.txtContraseña.getText());
+                new ProfesorController().CapturarIDcontroller(this.txtusuario.getText(),this.txtContraseña.getText());
         
         id = idobtenido;
         

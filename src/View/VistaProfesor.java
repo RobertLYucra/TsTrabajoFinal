@@ -27,7 +27,7 @@ public class VistaProfesor extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         
         llenarColumna();
-        //listar();
+        listar();
         MostrarU();
     }
     
@@ -39,7 +39,7 @@ public class VistaProfesor extends javax.swing.JFrame {
         this.TbTutoria.setModel(dtm);
     }
     
-    /*public void listar(){
+    public void listar(){
         List<Object[]> lst = new TutoriaController().ListarProcontroller(ProfesorTutor.id);
         //dtm.setRowCount(0);
         int cont = 0;
@@ -48,7 +48,7 @@ public class VistaProfesor extends javax.swing.JFrame {
             cont ++;
         }
         TbTutoria.setModel(dtm);
-    }*/
+    }
     public void MostrarU(){
         Profesor e = new Profesor();
         e.setIdTut(id);
@@ -92,8 +92,6 @@ public class VistaProfesor extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("BIENVENIDO PROFESOR");
-
-        jTextField1.setText("jTextField1");
 
         jButton1.setText("CREAR SESIÓN");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
