@@ -86,5 +86,39 @@ public class ProgramaclaseModel {
        return null;
     }
      
-    }
+     
+    public int CapturarID(String fech,String hor, String nombrep,String apellidosp,String curso){
+        int id=1;        
+        try{ 
+            ResultSet resultSet; 
+
+            CallableStatement s = Conexion.ObtenerConexion().prepareCall("{call stp_buscaridPro(?,?,?,?,?)}");
+            s.setString(1,fech);
+            s.setString(2,hor);
+            s.setString(3,nombrep);
+            s.setString(4,apellidosp);
+            s.setString(5,curso);
+            
+            
+
+            //resultSet = s.executeQuery(sql); EL ERROR QUITA EL SQL :) AL COPIAR Y PEGAR SE FILTRO
+            resultSet = s.executeQuery();
+
+            while(resultSet.next()){
+
+                id = resultSet.getInt("idProgramacion");
+            }
+
+            Conexion.ObtenerConexion().close();
+            s.close();
+            resultSet.close();
+            return id;
+        }catch(SQLException e){
+            Logger.getLogger(EstudianteModel.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return id;     
+        }
+ }
+     
+    
 

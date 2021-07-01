@@ -36,7 +36,6 @@ public class EstudianteModel {
         s.setString(1,usu);
         s.setString(2,pass);
       
-        //resultSet = s.executeQuery(sql); EL ERROR QUITA EL SQL :) AL COPIAR Y PEGAR SE FILTRO
         resultSet = s.executeQuery();
         
         while(resultSet.next()){

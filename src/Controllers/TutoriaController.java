@@ -5,6 +5,7 @@
  */
 package Controllers;
 
+import Beans.Tutoria;
 import Model.TutoriaModel;
 import java.util.List;
 
@@ -18,5 +19,8 @@ public class TutoriaController {
     }
     public List<Object[]> buscarEstcontroller(int id,String curso){
         return new TutoriaModel().BuscarTut(id,curso);
+    }
+    public void AñadirTut(Tutoria t){
+        new TutoriaModel().InsertarTutoria(t);
     }
 }

@@ -6,10 +6,13 @@
 package View;
 
 import Beans.Estudiante;
+import Beans.Tutoria;
 import Controllers.EstudianteController;
 import Controllers.Programaclasecontroller;
+import Controllers.TutoriaController;
 import static View.LoginEstudiante.id;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -92,6 +95,7 @@ public class TutoriasF extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         txtapellido = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -133,6 +137,11 @@ public class TutoriasF extends javax.swing.JFrame {
         txtcurso.setEditable(false);
 
         jButton1.setText("REGISTRARSE");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -201,6 +210,8 @@ public class TutoriasF extends javax.swing.JFrame {
 
         txtapellido.setEditable(false);
 
+        jLabel14.setText("jLabel14");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -240,7 +251,9 @@ public class TutoriasF extends javax.swing.JFrame {
                     .addComponent(txtnombrep)
                     .addComponent(txtcurso)
                     .addComponent(txtapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel14)
+                .addGap(64, 64, 64))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -267,10 +280,15 @@ public class TutoriasF extends javax.swing.JFrame {
                     .addComponent(txtfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txthora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txthora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addGap(6, 6, 6)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtnombrep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
@@ -310,6 +328,37 @@ public class TutoriasF extends javax.swing.JFrame {
             }
         dtmTutoria.setModel(dtm);
     }//GEN-LAST:event_txtbuscarKeyReleased
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        Tutoria t = new Tutoria();
+        TutoriaController tucon = new TutoriaController();
+        
+        int idobtenido = 
+                new Programaclasecontroller().CapturarIDcontrollwe(this.txtfecha.getText(),this.txthora.getText(),this.txtnombrep.getText(),this.txtapellido.getText(),this.txtcurso.getText());
+        
+        int idP = idobtenido;
+        
+        String botones []={"Confirmar", "Cancelar"};
+        int decision = JOptionPane.showOptionDialog(this, "¿Registrarte?", "Titutlo", 0, 0, null, botones, this);
+        if(decision==JOptionPane.YES_OPTION)
+        {
+            t.setIdprogramaclase(idP);
+            t.setIdestudiante(id);
+            tucon.AñadirTut(t);
+            
+            txtfecha.setText("");
+            txthora.setText("");
+            txtnombrep.setText("");
+            txtapellido.setText("");
+            txtcurso.setText("");
+            
+            JOptionPane.showMessageDialog(this, "Registro completado...");
+        }
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -354,6 +403,7 @@ public class TutoriasF extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
