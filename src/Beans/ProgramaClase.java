@@ -14,15 +14,13 @@ public class ProgramaClase {
     private String fecha  ;
     private String hora  ;
     private String idZoom ;
-    private int idTut;
     private int idCurso;
 
-    public ProgramaClase(int idprogramaclase, String fecha, String hora, String idZoom, int idTut, int idCurso) {
+    public ProgramaClase(int idprogramaclase, String fecha, String hora, String idZoom,  int idCurso) {
         this.idprogramaclase = idprogramaclase;
         this.fecha = fecha;
         this.hora = hora;
         this.idZoom = idZoom;
-        this.idTut = idTut;
         this.idCurso = idCurso;
     }
     public ProgramaClase  (){
@@ -63,14 +61,6 @@ public class ProgramaClase {
         this.idZoom = idZoom;
     }
 
-
-    public int getIdTut() {
-        return idTut;
-    }
-
-    public void setIdTut(int idTut) {
-        this.idTut = idTut;
-    }
 
     public int getIdCurso() {
         return idCurso;

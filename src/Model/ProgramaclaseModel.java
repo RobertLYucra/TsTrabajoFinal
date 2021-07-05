@@ -114,10 +114,29 @@ public class ProgramaclaseModel {
             resultSet.close();
             return id;
         }catch(SQLException e){
-            Logger.getLogger(EstudianteModel.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(ProgramaclaseModel.class.getName()).log(Level.SEVERE, null, e);
         }
         return id;     
         }
+    
+    public boolean registrarPrograma(ProgramaClase pg)
+    {        
+        try {
+            ResultSet resultSet; 
+
+            CallableStatement s = Conexion.ObtenerConexion().prepareCall("{call stp_insertarprogramac(?,?,?,?)}");
+            s.setString(1,pg.getFecha());
+            s.setString(2,pg.getHora());
+            s.setString(3,pg.getIdZoom());
+            s.setInt(4,pg.getIdCurso());
+            
+            resultSet = s.executeQuery();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(EstudianteModel.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
  }
      
     

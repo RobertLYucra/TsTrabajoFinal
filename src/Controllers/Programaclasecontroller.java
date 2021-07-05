@@ -5,6 +5,7 @@
  */
 package Controllers;
 
+import Beans.ProgramaClase;
 import Model.ProgramaclaseModel;
 import java.util.List;
 
@@ -23,5 +24,8 @@ public class Programaclasecontroller {
     
      public int CapturarIDcontrollwe(String fech,String hor, String nombrep,String apellidosp,String curso){
         return new ProgramaclaseModel().CapturarID(fech,hor,nombrep,apellidosp,curso);
+    }
+    public boolean RegistrarController(ProgramaClase pc){
+        return new ProgramaclaseModel().registrarPrograma(pc);
     }
 }

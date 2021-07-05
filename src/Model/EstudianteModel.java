@@ -90,7 +90,7 @@ public class EstudianteModel {
             return 1;
         } catch (SQLException ex) {
             Logger.getLogger(EstudianteModel.class.getName()).log(Level.SEVERE, null, ex);
-            return 1;
+            return 0;
         }
     }   
     
