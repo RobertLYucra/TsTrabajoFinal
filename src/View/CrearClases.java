@@ -39,6 +39,7 @@ public class CrearClases extends javax.swing.JFrame {
         MostrarU();
         listarcuro();
         TextPrompt nom = new TextPrompt("Buscar por curso", txtbuscar);
+        Idobcurso();
     }
 
     public void llenarColumna(){
@@ -364,6 +365,14 @@ public class CrearClases extends javax.swing.JFrame {
         idcurso = idobtenidocur;
     }//GEN-LAST:event_jComboBox1ActionPerformed
     
+    
+    public void Idobcurso(){
+        Curso c = new Curso();
+        String a = jComboBox1.getSelectedItem().toString();
+        c.setNombre(a);
+        int idobtenidocur = curcon.CapturarIdCursoController(c);
+        idcurso = idobtenidocur;
+    }
     /**
      * @param args the command line arguments
      */
