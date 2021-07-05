@@ -220,6 +220,11 @@ public class CrearClases extends javax.swing.JFrame {
 
         txtvolver.setBackground(new java.awt.Color(0, 102, 255));
         txtvolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/previous (1).png"))); // NOI18N
+        txtvolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtvolverActionPerformed(evt);
+            }
+        });
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/log-out.png"))); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -384,6 +389,12 @@ public class CrearClases extends javax.swing.JFrame {
         int idobtenidocur = curcon.CapturarIdCursoController(c);
         idcurso = idobtenidocur;
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void txtvolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtvolverActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+            new VistaProfesor().show();
+    }//GEN-LAST:event_txtvolverActionPerformed
     
     
     public void Idobcurso(){
